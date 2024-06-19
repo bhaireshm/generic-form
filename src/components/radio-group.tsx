@@ -7,39 +7,23 @@ interface RadioGroupProps<T> {
   field: keyof T;
   label: string;
   options?: { value: string; label: string }[];
-  url?: string;
+  // url?: string;
 }
 
-const RadioGroup = <T,>({
-  form,
-  field,
-  label,
-  options,
-  url = "http://localhost:3000/radio",
-}: RadioGroupProps<T>) => {
+const RadioGroup = <T,>({ form, field, label, options }: RadioGroupProps<T>) => {
   const [_options, setOptions] = useState(options);
 
-  // alternate options
-  // const mealOptions = [
-  //   { value: "veg", label: "Vegetarian" },
-  //   { value: "non-veg", label: "Non-Vegetarian" },
-  // ];
-  console.log("file: radio-group.tsx:41  useEffect  url", url);
-
   useEffect(() => {
-    if (url)
-      fetch(url)
-        .then((r) => r.json())
-        .then((resp) => {
-          console.log("file: radio-group.tsx:34  .then  resp", resp);
-          setOptions(() => {
-            return [...resp];
-          });
-
-          // form.setFieldValue(field, resp);
-        })
-        .catch(console.error);
-  }, [url]);
+    fetch("http://localhost:3000/radio")
+      .then((r) => r.json())
+      .then((resp) => {
+        console.log("file: radio-group.tsx:34  .then  resp", resp);
+        setOptions(() => {
+          return [...resp];
+        });
+      })
+      .catch(console.error);
+  }, []);
 
   return (
     <MantineRadioGroup label={label} {...form.getInputProps(field)}>
