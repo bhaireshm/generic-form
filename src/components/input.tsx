@@ -9,6 +9,7 @@ interface InputComponentProps<T> {
 }
 
 const Input = <T,>({ form, field, label, props }: InputComponentProps<T>) => {
+  
   return <MantineTextInput label={label} {...props} {...form.getInputProps(field)} />;
 };
 

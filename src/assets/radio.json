@@ -1,0 +1,7 @@
+{
+  "radio": [
+    { "value": "veg", "label": "Vegetarian" },
+    { "value": "non-veg", "label": "Non-Vegetarian" },
+    { "value": "ovi-veg", "label": "Ovi-veg" }
+  ]
+}

@@ -32,14 +32,10 @@ const GenericForm: React.FC = () => {
     },
   });
 
+
   const handleSubmit = (values: FormValues) => {
     console.log(values);
   };
-
-  const mealOptions = [
-    { value: "veg", label: "Vegetarian" },
-    { value: "non-veg", label: "Non-Vegetarian" },
-  ];
 
   const difficultOptions = [
     { value: "easy", label: "Easy" },
@@ -58,8 +54,7 @@ const GenericForm: React.FC = () => {
         <Text>Generic Form</Text>
 
         <Input props={{ placeholder: "Enter your name" }} form={form} field="name" label="Name" />
-
-        <RadioGroup form={form} field="mealOptions" label="Meal Options" options={mealOptions} />
+        <RadioGroup form={form} field="mealOptions" label="Meal Options"/>
 
         <MultipleCheckbox
           form={form}
